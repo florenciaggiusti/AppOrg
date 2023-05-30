@@ -1,6 +1,7 @@
 import './App.css';
 import Header from './componentes/Header/Header.js';
 import Formulario from './componentes/Formulario/Formulario.js'
+import MiOrg from './componentes/MiOrg';
 
 
 function App() {
@@ -8,6 +9,7 @@ function App() {
     <div>
       <Header />
       <Formulario />
+      <MiOrg></MiOrg>
     </div>
   );
 }
