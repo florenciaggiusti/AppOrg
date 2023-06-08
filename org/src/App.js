@@ -4,11 +4,17 @@ import Header from './componentes/Header/Header.js';
 import Formulario from './componentes/Formulario/Formulario.js'
 import MiOrg from './componentes/MiOrg';
 import Equipo from './componentes/Equipo';
+import Footer from './componentes/Footer';
 
 function App() {
 
   const [mostrarFormulario, actualizarMostrar] = useState(false);
-  const [colaboradores, actualizarColaboradores] = useState([]);
+  const [colaboradores, actualizarColaboradores] = useState([{
+    equipo: "Front End",
+    foto: "https://github.com/florenciaggiusti.png",
+    nombre: "Florencia Giusti",
+    puesto:"Desarrolladora Web"
+  }]);
 
   const cambiarMostrar = () =>{
     actualizarMostrar(!mostrarFormulario)
@@ -18,6 +24,14 @@ function App() {
     actualizarColaboradores([...colaboradores, colaborador])
   }
 
+  const eliminarColaborador = () => {
+    
+  }
+
+  const actualizarColor = (color, titulo) => {
+    
+  }
+  
   const equipos = [
     {
       titulo: "Programación",
@@ -69,8 +83,17 @@ function App() {
       <MiOrg cambiarMostrar={cambiarMostrar} />
 
       {
-        equipos.map( (equipo) => <Equipo datos={equipo} key={equipo.titulo} colaboradores={colaboradores}/>)
+        equipos.map( (equipo) => <Equipo 
+         datos={equipo} 
+         key={equipo.titulo} 
+         colaboradores={colaboradores.filter( colaborador => colaborador.equipo === equipo.titulo )}
+         eliminarColaborador={eliminarColaborador}
+         actualizarColor={actualizarColor}
+       />
+       )
       }
+
+      <Footer/>
       
     </div>
   );
